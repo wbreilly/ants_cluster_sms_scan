@@ -10,7 +10,7 @@
 #SBATCH --mem-per-cpu=4000 
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=wbreilly@ucdavis.edu
-#SBATCH --array=1-33
+#SBATCH --array=1-34
 
 
 date 
