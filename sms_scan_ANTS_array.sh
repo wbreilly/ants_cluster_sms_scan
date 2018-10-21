@@ -7,7 +7,7 @@
 #SBATCH -c 1  # might only need 1? 
 #SBATCH --time=5-00:00:00
 #SBATCH -p bigmemm
-#SBATCH --mem-per-cpu=6000 
+#SBATCH --mem-per-cpu=8000 
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=wbreilly@ucdavis.edu
 #SBATCH --array=1-34
