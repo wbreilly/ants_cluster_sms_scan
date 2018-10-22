@@ -1,16 +1,16 @@
 #!/bin/bash -l 
 #
-#SBATCH --job-name=write_mtl_rois_8_19_18
-#SBATCH --output=/home/wbreilly/halle_data_ants_crick/logs/write_mtl_rois_8_19_18.%j.%N.out
-#SBATCH --error=/home/wbreilly/halle_data_ants_crick/logs/write_mtl_rois_8_19_18.%j.%N.err
+#SBATCH --job-name=write_mtl_rois_10_22_18
+#SBATCH --output=/home/wbreilly/sms_scan_crick/ants_data_10_20_18/logs/write_mtl_rois_10_22_18.%j.%N.out
+#SBATCH --error=/home/wbreilly/sms_scan_crick/ants_data_10_20_18/logs/write_mtl_rois_10_22_18.%j.%N.err
 #SBATCH --nodes=1
 #SBATCH -c 1
 #SBATCH --time=5-00:00:00
-# #SBATCH -p bigmemm
+# #SBATCH -p high
 #SBATCH --mem-per-cpu=2000 
 #SBATCH --mail-type=ALL
 #SBATCH --mail-user=wbreilly@ucdavis.edu
-#SBATCH --array=5-47
+#SBATCH --array=1-34
 
 
 date 
@@ -20,13 +20,13 @@ module load ants/2.2.0
 export ANTSPATH=/group/dml/apps/ants/bin
 export PATH=${ANTSPATH}:$PATH
 
-export script_path=/home/wbreilly/halle_data_ants_crick/ants_scripts
+export script_path=/home/wbreilly/sms_scan_crick/ants_data_10_20_18/ants_cluster_sms_scan
 export PATH=${script_path}:$PATH
 
-SEEDFILE=/home/wbreilly/halle_data_ants_crick/ants_scripts/sub_array.txt # this is a file with the subjects to run one line for each subject i.e. sub01 sub02 etc.
+SEEDFILE=/home/wbreilly/sms_scan_crick/ants_data_10_20_18/ants_cluster_sms_scan/sub_array.txt # this is a file with the subjects to run one line for each subject i.e. sub01 sub02 etc.
 SEED=$(cat $SEEDFILE | head -n $SLURM_ARRAY_TASK_ID | tail -n 1) 
 
-SUBJECTS_DIR=/home/wbreilly/halle_data_ants_crick/$SEED/002_mprage_sag_NS_g3
+SUBJECTS_DIR=/home/wbreilly/sms_scan_crick/ants_data_10_20_18/$SEED/mprage_sag_NS_g3
 
 cd $SUBJECTS_DIR
 echo $SUBJECTS_DIR
